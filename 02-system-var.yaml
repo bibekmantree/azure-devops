@@ -20,4 +20,11 @@ stages:
     - bash: ls -R $(Build.SourcesDirectory)
     - bash: echo $(Agent.BuildDirectory)
     - bash: ls -R $(Agent.BuildDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+    
     
