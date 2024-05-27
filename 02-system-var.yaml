@@ -15,8 +15,7 @@ stages:
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
         Contents: |
-            **/*.yaml
-            **/*.yml
+            **/*.sql
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash: ls -R $(Build.ArtifactStagingDirectory)
     - task: PublishBuildArtifacts@1
