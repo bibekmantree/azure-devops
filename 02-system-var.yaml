@@ -18,3 +18,6 @@ stages:
     - bash: ls -R $(Build.ArtifactStagingDirectory)
     - bash: echo $(Build.SourcesDirectory)
     - bash: ls -R $(Build.SourcesDirectory)
+    - bash: echo $(Agent.BuildDirectory)
+    - bash: ls -R $(Agent.BuildDirectory)
+    
