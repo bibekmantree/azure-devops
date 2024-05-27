@@ -11,20 +11,18 @@ stages:
   - job: Build
     steps:
     - script: echo Build
-    - bash: echo $(Build.BuildId)
-    - bash: echo $(System.DefaultWorkingDirectory)
-    - bash: ls -R $(System.DefaultWorkingDirectory)
-    - bash: echo $(Build.ArtifactStagingDirectory)
-    - bash: ls -R $(Build.ArtifactStagingDirectory)
-    - bash: echo $(Build.SourcesDirectory)
-    - bash: ls -R $(Build.SourcesDirectory)
-    - bash: echo $(Agent.BuildDirectory)
-    - bash: ls -R $(Agent.BuildDirectory)
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
-        Contents: '**'
+        Contents: |
+            **/*.yaml
+            **/*.yml
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'yamls'
+        publishLocation: 'Container'
     
     
