@@ -37,3 +37,15 @@ stages:
           steps:
           - bash: echo Deploy to qa
 
+- stage: prodDeploy
+  displayName: prodDeploy
+  jobs:
+  - deployment: prodDeply
+    displayName: prod Deply
+    environment: prod
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - bash: echo Deploy to prod
+
