@@ -11,13 +11,13 @@ stages:
   - job: Build
     steps:
     - script: echo Build
-    # - task: CopyFiles@2
-    #   inputs:
-    #     SourceFolder: '$(Build.SourcesDirectory)'
-    #     Contents: |
-    #         **/*.sql
-    #     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    # - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)'
+        Contents: |
+            **/*.sql
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/sql'
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
     # - task: PublishBuildArtifacts@1
     #   inputs:
     #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -25,9 +25,8 @@ stages:
     #     publishLocation: 'Container'
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Build.SourcesDirectory)'
-        artifact: 'csvFile'
-        archiveFilePatterns: '**/*.sql'
+        targetPath: '$(Build.ArtifactStagingDirectory)/sql'
+        artifact: 'sqlFile'
     
     
     
