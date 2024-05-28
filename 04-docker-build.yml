@@ -17,6 +17,10 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
+    - bash: ls $(Build.SourcesDirectory)
+    - bash: ls $(Build.StagingDirectory)
+    - bash: ls $(Build.ArtifactStagingDirectory)
+
     - task: Docker@2
       displayName: Build an image and push it to container registry
       inputs:
@@ -25,3 +29,6 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
+    - bash: ls $(Build.SourcesDirectory)
+    - bash: ls $(Build.StagingDirectory)
+    - bash: ls $(Build.ArtifactStagingDirectory)
