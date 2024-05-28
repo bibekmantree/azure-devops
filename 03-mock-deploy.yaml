@@ -37,15 +37,15 @@ stages:
           steps:
           - bash: echo Deploy to qa
 
-- stage: prodDeploy
-  displayName: prodDeploy
+- stage: uatdeploy
+  displayName: uatdeploy
   jobs:
-  - deployment: prodDeply
-    displayName: prod Deply
-    environment: prod
+  - deployment: uatdeploy
+    displayName: uat Deply
+    environment: uat
     strategy:
       runOnce:
         deploy:
           steps:
-          - bash: echo Deploy to prod
+          - bash: echo Deploy to uat
 
