@@ -29,6 +29,8 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
+        addPipelineData: false
+        addBaseImageData: false
     - bash: ls $(Build.SourcesDirectory)
     - bash: ls $(Build.StagingDirectory)
     - bash: ls $(Build.ArtifactStagingDirectory)
