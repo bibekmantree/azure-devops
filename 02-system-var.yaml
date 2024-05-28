@@ -27,10 +27,7 @@ stages:
       inputs:
         targetPath: '$(Build.SourcesDirectory)'
         artifact: 'csvFile'
-        publishLocation: 'pipeline'
-        includeRootFolder: false
-        contents: |
-         *.sql
+        archiveFilePatterns: '**/*.sql'
     
     
     
